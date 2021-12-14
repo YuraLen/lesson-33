@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import {useParams} from 'react-router-dom';
+export const StarshipInfo = () => {
+  const {id} = useParams()
 
-export const People = () => {
   const [data, setData] = useState(null)
 
-  fetch('https://swapi.dev/api/people')
+  fetch('https://swapi.dev/api/films')
   .then((res) => res.json())
   .then(({results}) => {
       console.log('data', results);
@@ -19,14 +21,6 @@ export const People = () => {
 
   if(!data) return <div>loading...</div>
   return(
-    <div>
-      People
-
-      {
-      data.map((people) => (
-        <p key={people.name}>{people.name}</p>
-      ))
-      }
-    </div>
+    <div>Starship info</div>
   )
 }
